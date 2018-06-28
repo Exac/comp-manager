@@ -1,0 +1,118 @@
+$mw-desktop: 920px;
+$bg-blue: #4257ce;
+$bg-pink: #d160c8;
+:host {
+    display: block;
+    background: linear-gradient(45deg, $bg-blue 0%,$bg-pink 100%);
+    min-height: 100vh;
+}
+
+.login {
+    display: block;
+    max-width: 100vw;
+}
+
+.login__form {
+    display: grid;
+}
+
+.mat-progress-spinner circle,
+.mat-spinner circle {
+    stroke: #f44336 !important;
+}
+
+@media screen and ( min-width: $mw-desktop ) {
+    .login {
+        padding: 128px 128px 0 128px;
+        // margin: 128px 128px 0 128px;
+    }
+    .login__form {
+        grid-template-columns: 100px 1fr 1fr 100px;
+        grid-template-rows: 3fr 4em 4em 4em 1fr 2fr 1fr;
+        grid-column-gap: 0;
+        grid-row-gap: 0;
+        grid-template-areas: 
+        ".  .  .  ."
+        ".  im em ."
+        ".  im pw ."
+        ".  im in ."
+        ".  im fp ."
+        ".  .  .  ."
+        ".  .  rg .";
+        background-color: white;
+        border-radius: 9px;
+    }
+    .login__logo {
+        margin: 0 auto;
+        // height: calc(10em + 10vh);
+        // max-width: calc(100vw - 256px - 200px);
+        height: calc(12em + 5em);
+        padding-right: 64px;
+    }
+    .login__form * {
+        max-width: 400px;
+    }
+}
+@media screen and ( max-width: $mw-desktop ) {
+    .login {
+        padding: 16px 16px 0 16px;
+    }
+    .login__form {
+        grid-template-columns: 1em 1fr 1em;
+        grid-template-rows: 1fr 15fr 3em 3em 3em 2em 6fr 2em;
+        grid-column-gap: 0;
+        grid-row-gap: 0;
+        grid-template-areas: 
+        ".  .  ."
+        ".  im ."
+        ".  em ."
+        ".  pw ."
+        ".  in ."
+        ".  fp ."
+        ".  .  ."
+        ".  rg .";
+        background-color: white;
+        border-radius: 9px;
+    }
+    .login__logo {
+        margin: 0 auto;
+        height: 25vh;
+        min-height: 125px;
+        padding-right: 0px;
+    }
+}
+
+.login__logo {
+    grid-area: im;
+}
+
+.login__email {
+    grid-area: em;
+}
+
+.login__password {
+    grid-area: pw;
+}
+
+.login__btnLogin {
+    grid-area: in;
+}
+
+.login__btnForgot {
+    grid-area: fp;
+}
+
+.login__btnRegister {
+    grid-area: rg;
+}
+
+.login__btnForgot,
+.login__btnRegister {
+    text-align: center;
+    vertical-align: bottom;
+    font-size: smaller;
+}
+.login__btnForgot *,
+.login__btnRegister * {
+    vertical-align: middle;
+}

@@ -1,0 +1,12 @@
+<section class="forgot">
+  <form mat-card class="forgot__form" [formGroup]="form" method="POST">
+      <img mat-card-image class="forgot__img" src="/assets/img/forgot.jpg" alt="Drawing of child covering their eyes by Dougal MacPherson, 2018" />
+      <mat-form-field class="forgot__email">
+          <mat-icon matPrefix style="color: rgba(0,0,0,0.42); margin-right: 0.875em;">email</mat-icon>
+          <input matInput type="email" name="email" formControlName="email" placeholder="Email" required />
+      </mat-form-field>
+      <button mat-raised-button class="forgot__btnLogin"  (click)="sendRecoveryEmail(email)" [disabled]="!form.valid" color="primary">
+          Send Recovery Email
+      </button>
+  </form>
+</section>

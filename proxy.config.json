@@ -1,0 +1,12 @@
+{
+    "/api/*": {
+        "target": "http://localhost:8081/",
+        "secure": "false",
+        "changeOrigin": true
+    },
+    "/passport/*":{
+        "target": "http://localhost:8081/",
+        "secure": "false",
+        "changeOrigin": true
+    }
+}

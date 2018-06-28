@@ -1,0 +1,75 @@
+<section class="register">
+  <mat-horizontal-stepper [linear]="true" class="register__stepper" #stepper>
+    <mat-step [stepControl]="fg1Email">
+      <form [formGroup]="fg1Email">
+        <ng-template matStepLabel>Email</ng-template>
+        <div *ngIf="">Pristine</div>
+        <mat-form-field class="register__email">
+            <mat-icon matPrefix style="color: rgba(0,0,0,0.42); margin-right: 0.875em;">email</mat-icon>
+          <input matInput type="email" name="email" placeholder="Email" formControlName="fc1" autofocus required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$"
+          email />
+        </mat-form-field>
+        <div *ngIf="fg1Email.get('fc1').status === 'PENDING'" class="invalid">
+          <p>
+            <mat-icon>watch_later</mat-icon>
+          </p>
+        </div>
+        <div *ngIf="fg1Email.get('fc1').status === 'VALID'" class="valid">
+          <p>
+            <mat-icon>check_circle</mat-icon>
+          </p>
+        </div>
+        <div *ngIf="fg1Email.get('fc1').errors && !fg1Email.get('fc1').errors.emailTaken && fg1Email.get('fc1').dirty" class="invalid">
+          <p>
+            <mat-icon>error</mat-icon>
+            <span>Invalid email</span>
+          </p>
+        </div>
+        <div *ngIf="fg1Email.get('fc1').errors && fg1Email.get('fc1').errors.emailTaken" class="invalid">
+          <p>
+            <mat-icon>error</mat-icon>
+            <span>Email already in use.</span></p>
+        </div>
+        <div class="register__nextBtn">
+          <button mat-raised-button matStepperNext [disabled]="!fg1Email.valid" color="primary">Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="fg2Alias">
+      <form [formGroup]="fg2Alias">
+        <ng-template matStepLabel>Name</ng-template>
+        <p>How do you want to be known? Use your name, or an alias like
+          <b>TGM🇨🇦</b>.</p>
+        <mat-form-field class="register__alias">
+          <input matInput type="text" placeholder="Name" formControlName="fc2" required/>
+        </mat-form-field>
+        <div class="register__nextBtn">
+          <button mat-raised-button matStepperNext [disabled]="!fg2Alias.valid" color="primary">Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="fg3Password">
+      <form [formGroup]="fg3Password">
+        <ng-template matStepLabel>Password</ng-template>
+        <p>Choose a secure password, make it as complex as you want.</p>
+        <mat-form-field class="register__password">
+          <mat-icon matPrefix style="color: rgba(0,0,0,0.42); margin-right: 0.875em;">lock</mat-icon>
+          <input matInput type="password" placeholder="Password" formControlName="fc3" required/>
+        </mat-form-field>
+        <div class="register__nextBtn">
+          <button mat-raised-button matStepperNext [disabled]="!fg3Password.valid" color="primary">Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="fg4Review">
+      <form [formGroup]="fg4Review">
+        <ng-template matStepLabel>Review</ng-template>
+        <app-login-terms></app-login-terms>
+        <mat-checkbox class="register__review" formControlName="fc4" required>I have read, understand, and accept the terms of use.</mat-checkbox>
+        <div class="register__nextBtn">
+          <button mat-raised-button matStepperNext [disabled]="!fg4Review.valid" color="accent" (click)="register()">Register</button>
+        </div>
+      </form>
+    </mat-step>
+  </mat-horizontal-stepper>
+</section>

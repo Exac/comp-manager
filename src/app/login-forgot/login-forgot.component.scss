@@ -1,0 +1,48 @@
+$mw-desktop: 920px;
+$bg-blue: #4257ce;
+$bg-pink: #d160c8;
+:host {
+    display: block;
+    background: linear-gradient(45deg, $bg-blue 0%,$bg-pink 100%);
+    min-height: 100vh;
+    padding: 128px;
+}
+
+.forgot {
+    display: block;
+    max-width: 100vw;
+    overflow-x:hidden;
+}
+
+.forgot__img {
+    width: 100%;
+}
+
+.forgot__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: white;
+    border-radius: 9px;
+    padding: 1em;
+}
+.forgot__form * {
+    max-width: 400px;
+    align-self: center;
+}
+
+@media screen and ( min-width: $mw-desktop ) {
+    :host {
+        padding: 128px 128px 0 128px;
+    }
+    
+}
+@media screen and ( max-width: $mw-desktop ) {
+    :host {
+        padding: 16px 16px 0 16px;
+    }
+    .forgot__form {
+        background-color: white;
+        border-radius: 9px;
+    }
+}

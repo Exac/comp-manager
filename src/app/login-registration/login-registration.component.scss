@@ -1,0 +1,72 @@
+$mw-desktop: 920px;
+
+:host {
+    display: block;
+    min-height: 100vh;
+}
+
+.register {
+    display: block;
+    max-width: 100vw;
+}
+
+.register__stepper {
+    display: block;
+    min-height: 25vh;
+}
+
+@media screen and (min-width: $mw-desktop) {
+    .register {
+        padding: 128px 128px 0 128px;
+    }
+    .register__stepper {
+        background-color: rgba(255,255,255,1.0);
+        border-radius: 9px;
+    }
+}
+
+@media screen and (max-width: $mw-desktop) {
+    .register {
+        padding: 16px 16px 0 16px;
+    }
+    .register__stepper {
+        background-color: rgba(255,255,255,1.0);
+        border-radius: 9px;
+    }
+    .mat-horizontal-stepper-header-container,
+    .mat-horizontal-stepper-header-container * {
+        // display: none !important;
+        font-size: x-small;
+    }
+    .mat-stepper-horizontal-line {
+        border-top-color: rgba(0,0,0,0);
+    }
+}
+
+.register__nextBtn {
+    width: 100%;
+    text-align: right;
+}
+
+.invalid p,
+.valid p {
+    font-size:small;
+}
+
+.invalid .mat-icon,
+.valid mat-icon {
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.invalid,
+.invalid p,
+.invalid *{
+    color: #f44336;
+}
+
+.valid,
+.valid p,
+.valid * {
+    color: rgba(0,0,0,0.42);
+}

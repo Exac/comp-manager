@@ -1,0 +1,13 @@
+<section class="recovery">
+  <form mat-card class="recovery__form" [formGroup]="form">
+      <img mat-card-image class="recovery__img" src="/assets/img/recovery.jpg" alt="Drawing of boy looking forgetful by Dougal MacPherson, 2018" />
+      <p class="recovery__instructions">Hi <span class="recovery__alias">{{alias}}</span>, go ahead and enter your new password.</p>
+      <mat-form-field class="recovery__email">
+          <mat-icon matPrefix style="color: rgba(0,0,0,0.42); margin-right: 0.875em;">lock</mat-icon>
+          <input matInput type="password" name="password" formControlName="password" placeholder="New Password" minlength="2" required />
+      </mat-form-field>
+      <button mat-raised-button type="submit" class="recovery__btnUpdate" (click)="updatePassword()" [disabled]="!form.valid" color="primary">
+          Update Password
+      </button>
+  </form>
+</section>

@@ -1,0 +1,30 @@
+<section class="login">
+    <form mat-card class="login__form" [formGroup]="form" (ngSubmit)="login()" method="post" action="/api/user/passport/login" >
+        <!-- <img mat-card-image class="login__logo" src="/assets/img/logo/chollima.svg" alt="comp-manager logo" /> -->
+        <img mat-card-image class="login__logo" src="/assets/img/skater.jpg" alt="comp-manager logo" />
+        <mat-form-field class="login__email">
+            <mat-icon matPrefix style="color: rgba(0,0,0,0.42); margin-right: 0.875em;">email</mat-icon>
+            <input matInput type="email" name="email" formControlName="email" placeholder="Email" email />
+        </mat-form-field>
+        <mat-form-field class="login__password">
+            <mat-icon matPrefix style="color: rgba(0,0,0,0.42); margin-right: 0.875em;">lock</mat-icon>
+            <mat-spinner matSuffix *ngIf="form.controls.password.hasError('wait')" [color]="'warn'"  [diameter]="16" ></mat-spinner>
+            <input matInput type="password" name="password" formControlName="password" minlength="1" placeholder="Password" />
+            <mat-error *ngIf="form.controls.password.hasError('wait')">Wait 1s after incorrect password attempt.</mat-error>
+        </mat-form-field>
+        <button mat-raised-button class="login__btnLogin" (click)="login()" [disabled]="!form.valid || form.controls.password.hasError('wait')" color="primary">
+            Login
+        </button>
+        <a routerLink="/login/forgot" class="login__btnForgot">
+            <button mat-button>
+                Forgot password?
+            </button>
+        </a>
+        <a routerLink="/login/registration" class="login__btnRegister">
+            <button mat-button>
+                Create your account
+                <mat-icon>arrow_right_alt</mat-icon>
+            </button>
+        </a>
+    </form>
+</section>

@@ -1,0 +1,19 @@
+<p>
+  welcome works!
+</p>
+<p>
+  <a routerLink="/welcome">Welcome</a>
+  <a routerLink="/login">Login</a>
+</p>
+<form (ngSubmit)="submit()" method="post" action="/api/user/passport/login" #form>
+  <mat-form-field>
+    <input matInput id="username" name="username" type="text" [(ngModel)]="email" value="{{email}}">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput id="email" name="email" type="text" [(ngModel)]="email" value="{{email}}">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput id="password" name="password" type="password" [(ngModel)]="password">
+  </mat-form-field>
+  <button mat-raised-button type="submit">Submit</button>
+</form>
