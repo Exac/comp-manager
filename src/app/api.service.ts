@@ -28,6 +28,13 @@ export interface Auth {
 })
 export class ApiService {
 
+  private httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': ''
+    })
+  }
+
   constructor(private http: HttpClient) { }
 
   public login(email: string, password: string): Observable<boolean/*{ 'success': boolean, 'user'?: User }*/> {
@@ -54,13 +61,6 @@ export class ApiService {
         console.log(`ApiService.isLoggedIn() ->`, res)
         return res.success
       }))
-  }
-
-  public userEmailExists(email: string) {
-    return this.http.get('/api/user/email/' + email)
-      .pipe(map((res: { id: number | null, email: string | null }) => {
-        return res.email == null ? false : true;
-      }));
   }
 
   public getUserEmail(id: number): Observable<string> {
@@ -115,4 +115,31 @@ export class ApiService {
       httpOptions
     );
   }
+
+  public createUser(userEmail: string, userAlias: string, userPassword: string): Observable<{ success: boolean, message: string }> {
+    let usr = { email: userEmail, alias: userAlias, password: userPassword };
+    return this.http.post('/api/user/', usr, this.httpOptions)
+      .pipe(map((res: { success: boolean, message: string }) => {
+        console.log('createUser:::',res)
+        return res;
+      }));
+  }
+
+  public userEmailExists(email: string): Observable<boolean> {
+    return this.http.get(`/api/user/email/${email}/exists`)
+      .pipe(map((res: boolean) => {
+        console.log(res ? ':::exists' : ':::does not exist')
+        return res;
+      }));
+  }
+
+  public userAliasExists(alias: string): Observable<boolean> {
+    return this.http.get(`/api/user/alias/${alias}/exists`)
+      .pipe(map((res: boolean) => {
+        console.log(res ? ':::exists' : ':::does not exist')
+        return res;
+      }));
+  }
+  
+  
 }

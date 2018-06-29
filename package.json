@@ -9,6 +9,10 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
+  "repository" :
+  { "type" : "git"
+  , "url" : "https://github.com/Exac/comp-manager.git"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^6.0.3",
