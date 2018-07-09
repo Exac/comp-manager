@@ -12,7 +12,7 @@
             <input matInput type="password" name="password" formControlName="password" minlength="1" placeholder="Password" />
             <mat-error *ngIf="form.controls.password.hasError('wait')">Wait 1s after incorrect password attempt.</mat-error>
         </mat-form-field>
-        <button mat-raised-button class="login__btnLogin" (click)="login()" [disabled]="!form.valid || form.controls.password.hasError('wait')" color="primary">
+        <button mat-raised-button class="login__btnLogin" type="submit" [disabled]="!form.valid || form.controls.password.hasError('wait')" color="primary">
             Login
         </button>
         <a routerLink="/login/forgot" class="login__btnForgot">

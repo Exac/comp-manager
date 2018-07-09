@@ -1,19 +1,61 @@
-<p>
-  welcome works!
-</p>
-<p>
-  <a routerLink="/welcome">Welcome</a>
-  <a routerLink="/login">Login</a>
-</p>
-<form (ngSubmit)="submit()" method="post" action="/api/user/passport/login" #form>
-  <mat-form-field>
-    <input matInput id="username" name="username" type="text" [(ngModel)]="email" value="{{email}}">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput id="email" name="email" type="text" [(ngModel)]="email" value="{{email}}">
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput id="password" name="password" type="password" [(ngModel)]="password">
-  </mat-form-field>
-  <button mat-raised-button type="submit">Submit</button>
-</form>
+<section class="welcome__nav">
+  <div class="nav__logo">
+    <img src="assets/img/logo/chollima-wordmark.svg" />
+  </div>
+</section>
+
+<section class="welcome__hero">
+  <video id="coffee" autoplay="autoplay" playsinline muted="muted" preload="auto" loop="loop">
+    <source src="assets/video/coffee.mp4" type="video/mp4">
+  </video>
+  <canvas id="cinemagraph"></canvas>
+  <div class="hero__phrase mat-typography">
+    <span class="mat-display-3">Prepare your coffee</span>
+  </div>
+  <button class="hero__cta" mat-raised-button [routerLink]="['/login']" color="accent">
+    <span>Manage a meet</span>
+  </button>
+</section>
+
+<section class="welcome__description mat-typography">
+  <div class="description__plan">
+    <span class="mat-display-1">Plan</span>
+    <p class="mat-body-1">Chollima gets you going with multiple databases to draw from.</p>
+    <p class="mat-body-1">Use your browser, phone, or tablet. Super simple, stress-free&trade;.</p>
+  </div>
+  <div class="description__execute">
+    <span class="mat-display-1">Execute</span>
+    <p class="mat-body-1">Make your day a breeze with Chollima.
+      <br>Its free. Why not?</p>
+    <button mat-button [routerLink]="['/login/registration']">
+      <span>Register</span>
+    </button>
+    <button mat-button [routerLink]="['/login/']">
+      <span>Login</span>
+    </button>
+  </div>
+</section>
+
+<section class="welcome__footer mat-typography">
+  <canvas id="noise"></canvas>
+
+  <div class="footer__disclaimer">
+    <p class="mat-caption">
+      Copyright &copy; {{year}} Chollima. All rights reserved. Chollima is open and free software. It is maintained by
+      <a href="https://github.com/exac/">Thomas McLennan</a>. The source-code and can be found
+      <a href="https://github.com/exac/comp-manager">here</a> &amp;
+      <a href="https://github.com/exac/comp-manager-api">here</a>. All contributions are welcome. You can
+      <a href="email:thomas.mclennan@bcspeedskating.ca">contact Thomas</a> via email, or submit a pull-request on github.
+    </p>
+  </div>
+
+  <div class="footer__logo">
+    <img src="assets/img/logo/chollima-wordmark.svg" />
+  </div>
+
+  <div class="footer__sponsors">
+    <a class="bcssa" href="https://bcspeedskating.ca"></a>
+    <a class="github" href="https://github.com/exac/comp-manager"></a>
+  </div>
+
+</section>

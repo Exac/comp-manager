@@ -11,8 +11,10 @@ import {
   MatIconModule,
   MatStepperModule,
   MatDialogModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatTooltipModule,
 } from '@angular/material';
+import { UserInfoModule } from './user-info/user-info.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { LoginComponent } from './login/login.component';
@@ -22,6 +24,8 @@ import { LoginForgotComponent, LoginForgotDialogComponent } from './login-forgot
 import { LoginRecoveryComponent } from './login-recovery/login-recovery.component';
 import { LoginTermsComponent } from './login-terms/login-terms.component';
 import { ChooseActivityComponent } from './choose-activity/choose-activity.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -43,6 +47,7 @@ import { ChooseActivityComponent } from './choose-activity/choose-activity.compo
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    UserInfoModule,
     MatButtonModule,
     MatCheckboxModule,
     MatInputModule,
@@ -51,7 +56,9 @@ import { ChooseActivityComponent } from './choose-activity/choose-activity.compo
     MatStepperModule,
     MatDialogModule,
     MatProgressSpinnerModule,
-    AppRoutingModule
+    MatTooltipModule,
+    AppRoutingModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

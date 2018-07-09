@@ -3,20 +3,15 @@ import { RequestOptions, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { map, catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { UserDashboardComponent } from './user-info/user-dashboard/user-dashboard.component';
+import { IUser } from './IUser';
+import { User } from './User';
 
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
     'Authorization': ''
   })
-}
-
-export interface User {
-  id: number,
-  alias: string,
-  email: string,
-  password: string,
-  salt: string
 }
 
 export interface Auth {
@@ -28,6 +23,8 @@ export interface Auth {
 })
 export class ApiService {
 
+  public static user: User;
+
   private httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -35,7 +32,11 @@ export class ApiService {
     })
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    if (typeof ApiService.user === 'undefined') {
+      ApiService.user = new User(0, 'Alias', 'email@example.com')
+    }
+  }
 
   public login(email: string, password: string): Observable<boolean/*{ 'success': boolean, 'user'?: User }*/> {
     let params: HttpParams = new HttpParams()
@@ -47,18 +48,32 @@ export class ApiService {
         'Content-Type': 'application/x-www-form-urlencoded',
       })
     }
-    return this.http.post<{ 'success': boolean, 'user': User }>('/api/passport/login',
+    return this.http.post<{ 'success': boolean, 'user': IUser }>('/api/passport/login',
       params.toString(),
       options
-    ).pipe(map((res: { 'success': boolean, 'user': User }) => {
+    ).pipe(map((res: { 'success': boolean, 'user': IUser }) => {
       return res.success
     }))
   }
 
+  public logout(): Observable<boolean> {
+    return this.http.post<{ 'success': boolean }>('/api/passport/logout',
+      null, httpOptions).pipe(map((res: { 'success': boolean }) => {
+        // TODO: Uncomment this, it is essential
+        ApiService.user = new User();
+        return res.success;
+      }))
+  }
+
   public isLoggedIn(): Observable<boolean> {
     return this.http.post<{ 'success': boolean, 'id'?: string }>('/api/passport/isloggedin/',
-      null, httpOptions).pipe(map( (res:{ 'success': boolean, 'id'?: string }) => {
-        console.log(`ApiService.isLoggedIn() ->`, res)
+      null, httpOptions).pipe(map((res: { 'success': boolean, 'user'?: IUser }) => {
+        if (typeof res.user !== 'undefined') {
+          ApiService.user = new User(res.user.id, res.user.alias, res.user.email)
+        } else {
+          ApiService.user = new User()
+        }
+
         return res.success
       }))
   }
@@ -120,7 +135,7 @@ export class ApiService {
     let usr = { email: userEmail, alias: userAlias, password: userPassword };
     return this.http.post('/api/user/', usr, this.httpOptions)
       .pipe(map((res: { success: boolean, message: string }) => {
-        console.log('createUser:::',res)
+        console.log('createUser:::', res)
         return res;
       }));
   }
@@ -140,6 +155,6 @@ export class ApiService {
         return res;
       }));
   }
-  
-  
+
+
 }

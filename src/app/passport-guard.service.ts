@@ -29,19 +29,21 @@ export class PassportGuard implements CanActivate {
 
   constructor(private http: HttpClient, private apiService: ApiService, private router: Router) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) : Observable<boolean> {
-    return this.http.post<{ 'success': boolean, 'id'?: string }>('/api/passport/isloggedin/',
-      null, httpOptions).pipe(map( (res:{ 'success': boolean, 'id'?: string }) => {
-        console.log(`ApiService.isLoggedIn() ->`, res)
-        if (res.success) {
-          return true
-        } else {
-          console.log('Not Logged in, navigating to /login page now.')
-          state.url = '/login'
-          this.router.navigate(['/login'])
-          return false; 
-        }
-      }))
-  }
-  
+  /**
+   * Can the user proceed to the Routing Module's route?
+   * @param route 
+   * @param state 
+   */
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
+    return this.apiService.isLoggedIn().pipe(map((isLoggedIn: boolean) => {
+      if (isLoggedIn === true) {
+        return true;
+      } else {
+        // Not Logged in, navigating to /login page now.
+        state.url = '/login'
+        this.router.navigate(['/login'])
+      }
+    }))
+  };
+
 }

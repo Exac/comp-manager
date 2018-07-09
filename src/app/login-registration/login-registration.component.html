@@ -43,6 +43,11 @@
         <mat-form-field class="register__alias">
           <input matInput type="text" placeholder="Name" formControlName="fc2" required/>
         </mat-form-field>
+        <div *ngIf="fg2Alias.get('fc2').errors && fg2Alias.get('fc2').errors.aliasTaken" class="invalid">
+          <p>
+            <mat-icon>error</mat-icon>
+            <span>Alias already in use.</span></p>
+        </div>
         <div class="register__nextBtn">
           <button mat-raised-button matStepperNext [disabled]="!fg2Alias.valid" color="primary">Next</button>
         </div>
