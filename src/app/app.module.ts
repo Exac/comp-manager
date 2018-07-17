@@ -13,6 +13,7 @@ import {
   MatDialogModule,
   MatProgressSpinnerModule,
   MatTooltipModule,
+  MatSnackBarModule,
 } from '@angular/material';
 import { UserInfoModule } from './user-info/user-info.module';
 import { AppComponent } from './app.component';
@@ -40,7 +41,7 @@ import { environment } from '../environments/environment';
     ChooseActivityComponent
   ],
   entryComponents: [
-    LoginForgotDialogComponent
+    LoginForgotDialogComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -57,6 +58,7 @@ import { environment } from '../environments/environment';
     MatDialogModule,
     MatProgressSpinnerModule,
     MatTooltipModule,
+    MatSnackBarModule,
     AppRoutingModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],

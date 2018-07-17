@@ -1,6 +1,7 @@
 $mw-desktop: 920px;
 $bg-blue: #4257ce;
 $bg-pink: #d160c8;
+
 :host {
     display: block;
     background: linear-gradient(45deg, $bg-blue 0%,$bg-pink 100%);
@@ -44,8 +45,6 @@ $bg-pink: #d160c8;
     }
     .login__logo {
         margin: 0 auto;
-        // height: calc(10em + 10vh);
-        // max-width: calc(100vw - 256px - 200px);
         height: calc(12em + 5em);
         padding-right: 64px;
     }

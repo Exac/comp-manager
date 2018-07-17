@@ -1,0 +1,26 @@
+$mw-desktop: 920px;
+
+/* User Dashboard */
+#userD {
+    position: fixed;
+    display: grid;
+    visibility: hidden;
+    z-index: 1000;
+    overflow: auto;
+    top: 16px;
+    left: 16px;
+    width: calc(100% - 16px - 16px);
+    min-height: calc(100% - 16px - 16px);
+    background: rgba(255,255,255,0.99);
+    border-radius: 9px;
+    color: rgba(0,0,0,0.875);
+}
+
+@media screen and ( min-width: $mw-desktop ) {
+    #userD {
+        top: 128px;
+        left: 128px;
+        width: calc(100% - 128px - 128px);
+        min-height: calc(100% - 128px - 128px);
+    }
+}

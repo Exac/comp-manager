@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../api.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,7 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
+    private snackBar: MatSnackBar,
     private route: ActivatedRoute,
     private apiService: ApiService,
     private router: Router) { }
@@ -27,11 +29,17 @@ export class LoginComponent implements OnInit {
     this.form.controls.email.setValue(this.route.snapshot.params.email);
   }
 
+  ngAfterViewInit() {
+    if (this.route.snapshot.params.message) {
+      this.message(this.route.snapshot.params.message)
+    }
+  }
+
   public login() {
     // Send username / password to server to be challenged.
     this.apiService.login(this.form.controls.email.value, this.form.controls.password.value).subscribe(
       (res: boolean/*{ 'success': boolean, 'user'?: User }*/) => {
-      if (res/*.success*/) {
+        if (res/*.success*/) {
           this.router.navigate(['/choose-activity'], {})
         } else {
           console.log('Login Failed')
@@ -42,7 +50,7 @@ export class LoginComponent implements OnInit {
           this.form.controls.password.setErrors({ 'wait': true });
           setTimeout(() => {
             this.form.controls.password.setValidators([Validators.required])
-            this.form.controls.password.setErrors({'wait':false})
+            this.form.controls.password.setErrors({ 'wait': false })
             this.form.controls.password.setValue('')
           }, 1500)
         }
@@ -50,6 +58,12 @@ export class LoginComponent implements OnInit {
         console.log('whoops:', err)
       }
     )
+  }
+
+  public message(message: string) {
+    setTimeout(() => {
+      this.snackBar.open(message, 'Notice', { duration: -1 })
+    })
   }
 
 }

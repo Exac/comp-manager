@@ -22,6 +22,7 @@
 
 .welcome__hero {
     display: grid;
+    position: relative;
     height: 24rem;
     background-color: hsla(240, 25, 95,0.85);
     background-size: cover;
@@ -72,10 +73,9 @@
 
 #coffee {
     grid-area:z;
-    position: fixed;
-    left:0;
-    right: 0;
+    position: absolute;
     top:0;
+    bottom: 0;
     z-index:-3;
     // visibility: hidden;
     // display:none;
@@ -89,6 +89,14 @@
     margin-bottom: -3px;
 }
 
+canvas#cinemagraph {
+    outline: 3px inset hotpink;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    height: 100%;
+}
+
 .welcome__description {
     display:grid;
     grid-gap: 1em 2em;
@@ -96,6 +104,7 @@
     background-color: #111f4988;
     background-image: url('/assets/img/nat-can-dark@2x.jpg');
     background-size: cover;
+    background-position: 50% 50%;
     grid-template-columns: 1rem 1fr 1fr 1fr 1rem;
     grid-template-rows: 1fr;
     justify-content: space-evenly;

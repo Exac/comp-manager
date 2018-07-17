@@ -1,0 +1,13 @@
+<section id="userI">
+  <div class="userI__name">
+    <span>{{getUserAlias()}}</span>
+  </div>
+  <button class="userI__logoutBtn" mat-icon-button (click)="logout()" matTooltip="Logout">
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
+  <button class="userI__dBtn" mat-icon-button (click)="dashboard.toggleUserDashboard()" matTooltip="User settings">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+</section>
+
+<app-user-dashboard #dashboard></app-user-dashboard>

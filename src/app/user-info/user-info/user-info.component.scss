@@ -1,0 +1,36 @@
+$mw-desktop: 920px;
+
+#userI {
+    display: grid;
+    grid-template-columns: 6fr 2fr 2fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "nm ob db";
+    max-width: 210px;
+    border-radius: 9px;
+    align-items: center;
+    color: rgba(0,0,0,0.875);
+    background-color: rgba(255,255,255,0.99);
+}
+
+.userI__name {
+    grid-area: nm;
+    display: flex;
+    flex-direction: column;
+}
+.userI__name span {
+    text-align: center;
+    font-size: larger;
+}
+
+.userI__dBtn {
+    grid-area: db;
+    height: 100%;
+    width: 100%;
+}
+
+.userI_logoutBtn {
+    grid-area: ob;
+    height: 100%;
+    width: 100%;
+}
