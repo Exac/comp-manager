@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService, Auth } from '../api.service';
 import { throwError } from 'rxjs';
+import { AppRoutingModule } from '../app-routing/app-routing.module';
 
 interface CanvasRenderingContext2DFilter extends CanvasRenderingContext2D {
   filter?: string;

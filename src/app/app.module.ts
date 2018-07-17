@@ -44,8 +44,8 @@ import { environment } from '../environments/environment';
     LoginForgotDialogComponent,
   ],
   imports: [
-    BrowserAnimationsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     UserInfoModule,
