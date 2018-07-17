@@ -20,7 +20,7 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
     UserInfoComponent,
   ],
   declarations: [
-    UserInfoComponent, 
+    UserInfoComponent,
   UserDashboardComponent]
 })
 export class UserInfoModule { }
