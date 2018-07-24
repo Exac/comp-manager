@@ -1,4 +1,4 @@
-import { User } from '../user';
+import { User } from '../User';
 import Registration from './Registration';
 import Protocol from './Protocol';
 import Division from './Division';
@@ -51,5 +51,22 @@ export default class Competition {
         this.end_date = end_date ? end_date : new Date();
         this.location = location ? location : '';
     }
+
+    /**
+     * Save a competition model to the database.
+     */
+    public save(competition?: Competition): Competition {
+        let c: Competition; // the competition we do our operations on
+        c = competition ? competition : this;
+
+
+
+        return c;
+    }
+
+    /**
+     * Update this competition model in the database.
+     */
+    public update(): void { }
 
 }

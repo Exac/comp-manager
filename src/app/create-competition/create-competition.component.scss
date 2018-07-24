@@ -1,0 +1,68 @@
+[_nghost-c0], :host {
+    background-color: green !important;
+    background-image: none !important;
+    opacity: 1.0;
+}
+
+main {
+    background: rgb(246, 239, 250);
+    height: 100%;
+    z-index: 2;
+    position: relative;
+}
+
+#competition {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+}
+
+#competition > * {
+    @media screen and ( min-width: 250px ) { min-width: 250px;}
+}
+
+.mat-form-field {
+    display: block;
+    max-width: 300px;
+}
+
+[matSuffix].mat-icon {
+    color: rgba(0, 0, 0, 0.54);
+    font-size: small;
+    font-weight: 400;
+    margin: 0 0.35rem;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.arenaSketch {
+    width: 100%;
+}
+
+.bottom {
+    position: fixed;
+    top: 100vh;
+    margin-top: calc(100vw * -0.429);
+    min-height: calc(100vw * 0.429);
+    height: auto;
+    width: 100%;
+    z-index: 0;
+    background-image: url('/assets/img/arena-sketch@1x.jpg');
+    @media screen and ( min-width: 800px ) { background-image: url('/assets/img/arena-sketch@2x.jpg'); }
+    background-size: contain;
+    background-position: top center;
+}
+.bottom::after {
+    content: '';
+    display: block;
+    position: fixed;
+    bottom: calc(100vw * 0.429 - 1px);
+    height: 323px;
+    width: 100%;
+    background-image: url('/assets/img/arena-sketch-sky@1x.jpg');
+    @media screen and ( min-width: 800px ) { background-image: url('/assets/img/arena-sketch-sky@2x.jpg'); }
+    background-size: cover;
+    background-position: bottom center;
+}

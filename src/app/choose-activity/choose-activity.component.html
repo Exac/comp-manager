@@ -1,4 +1,38 @@
-<p>
-  choose-activity works!
-</p>
-<app-user-info></app-user-info>
+<main class="mat-typography">
+
+  <mat-toolbar color="accent" id="top">
+    <h1>Choose Activity</h1>
+    <span class="spacer"></span>
+    <app-user-info></app-user-info>
+  </mat-toolbar>
+
+  <section id="choices">
+    <section class="create">
+      <button mat-raised-button color="accent" routerLink="/create-competition">
+        <mat-icon>create</mat-icon>
+        <span> Create Competition</span>
+      </button>
+    </section>
+
+    <section class="join">
+      <button mat-raised-button color="accent" disabled>
+        <mat-icon>search</mat-icon>
+        <span> Join Competition</span>
+      </button>
+    </section>
+
+    <section class="protocol">
+      <button mat-raised-button color="accent" disabled>
+        <mat-icon>create</mat-icon>
+        <span> Create Protocol</span>
+      </button>
+    </section>
+
+  </section>
+
+  <section class="description">
+    <p class="mat-body-1">Create a competition to get started with a new meet. If you are assisting another recorder, join their competition
+      to work together. Create a protocol if a new one is required. </p>
+  </section>
+
+</main>

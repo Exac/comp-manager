@@ -1,0 +1,53 @@
+<main class="mat-typography">
+
+  <mat-toolbar color="accent" id="top">
+    <h1>Create Competition</h1>
+    <span class="spacer"></span>
+    <app-user-info></app-user-info>
+  </mat-toolbar>
+
+  <section>
+    <form id="competition" [formGroup]="fgCompetition">
+
+      <mat-form-field>
+        <mat-select placeholder="Protocol" formControlName="fc1ProtocolId" required>
+          <mat-optgroup *ngFor="let protocol of protocols" [label]="protocol.state">
+            <mat-option *ngFor="let p of protocol.protocols" [value]="p[0]">
+              {{p[1]}}
+            </mat-option>
+          </mat-optgroup>
+        </mat-select>
+      </mat-form-field>
+
+
+      <mat-form-field>
+        <input matInput placeholder="Name" formControlName="fc2Name" pattern="[a-zA-Z0-9# ]*" required>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [matDatepicker]="startPicker" placeholder="Start date" formControlName="fc3Start" required>
+        <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+        <mat-datepicker #startPicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput [matDatepicker]="endPicker" placeholder="End date" formControlName="fc4End" required>
+        <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+        <mat-datepicker #endPicker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Location" formControlName="fc5Location" pattern="[a-zA-Z0-9#, ]*" required>
+        <mat-icon matSuffix>location_on</mat-icon>
+      </mat-form-field>
+
+      <button mat-raised-button color="accent" (click)="create()" [disabled]="!fgCompetition.valid" >Create Competition</button>
+
+      <button mat-raised-button (click)="test()">Test</button>
+    </form>
+
+  </section>
+
+</main>
+
+<div class="bottom"></div>

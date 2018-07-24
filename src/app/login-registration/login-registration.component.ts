@@ -46,7 +46,7 @@ export class LoginRegistrationComponent implements OnInit {
         if (res.success) {
           this.router.navigate(['/login', { email: res.message }]);
         }
-      })
+      });
   }
 
 }

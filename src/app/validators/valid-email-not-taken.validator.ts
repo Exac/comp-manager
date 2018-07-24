@@ -8,6 +8,6 @@ export class ValidateEmailNotTaken {
       return apiService.userEmailExists(control.value).pipe(map((res: boolean) => {
         return !res ? null : { emailTaken: true };
       }));
-    }
+    };
   }
 }

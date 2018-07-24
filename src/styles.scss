@@ -1,10 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
-@import '~@angular/material/theming';
 
 /** Theming */
+@import '~@angular/material/theming';
+
 @include mat-core();
+
+
 $primary: mat-palette($mat-pink,200); // Colouring:
 $accent: mat-palette($mat-indigo,200); // http://goo.gl/8AJGux
 $theme-ip-light: mat-light-theme($primary, $accent);
@@ -21,3 +24,21 @@ $custom-typography: mat-typography-config(
 /* Global variables */
 
 $mw-desktop: 920px;
+
+
+/* Global styles */
+body, html {
+	height: 100%;
+}
+
+#top {
+	margin-bottom: 1pt;
+}
+
+.spacer {
+	flex: 1 1 auto;
+}
+
+.mat-raised-button {
+	text-transform: uppercase;
+}

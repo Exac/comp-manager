@@ -14,6 +14,11 @@ import {
   MatProgressSpinnerModule,
   MatTooltipModule,
   MatSnackBarModule,
+  MatGridListModule,
+  MatToolbarModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatSelectModule,
 } from '@angular/material';
 import { UserInfoModule } from './user-info/user-info.module';
 import { AppComponent } from './app.component';
@@ -27,6 +32,7 @@ import { LoginTermsComponent } from './login-terms/login-terms.component';
 import { ChooseActivityComponent } from './choose-activity/choose-activity.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { CreateCompetitionComponent } from './create-competition/create-competition.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +44,8 @@ import { environment } from '../environments/environment';
     LoginForgotDialogComponent,
     LoginRecoveryComponent,
     LoginTermsComponent,
-    ChooseActivityComponent
+    ChooseActivityComponent,
+    CreateCompetitionComponent
   ],
   entryComponents: [
     LoginForgotDialogComponent,
@@ -59,8 +66,30 @@ import { environment } from '../environments/environment';
     MatProgressSpinnerModule,
     MatTooltipModule,
     MatSnackBarModule,
+    MatGridListModule,
+    MatToolbarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
     AppRoutingModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
+  ],
+  exports: [
+    MatButtonModule,
+    MatCheckboxModule,
+    MatInputModule,
+    MatCardModule,
+    MatIconModule,
+    MatStepperModule,
+    MatDialogModule,
+    MatProgressSpinnerModule,
+    MatTooltipModule,
+    MatSnackBarModule,
+    MatGridListModule,
+    MatToolbarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

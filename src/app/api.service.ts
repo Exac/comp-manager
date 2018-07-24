@@ -7,13 +7,6 @@ import { UserDashboardComponent } from './user-info/user-dashboard/user-dashboar
 import { IUser } from './IUser';
 import { User } from './User';
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-    'Authorization': ''
-  })
-};
-
 export interface Auth {
   auth: { user: string };
 }
@@ -58,7 +51,7 @@ export class ApiService {
 
   public logout(): Observable<boolean> {
     return this.http.post<{ 'success': boolean }>('/api/passport/logout',
-      null, httpOptions).pipe(map((res: { 'success': boolean }) => {
+      null, this.httpOptions).pipe(map((res: { 'success': boolean }) => {
         // TODO: Uncomment this, it is essential
         ApiService.user = new User();
         return res.success;
@@ -67,7 +60,7 @@ export class ApiService {
 
   public isLoggedIn(): Observable<boolean> {
     return this.http.post<{ 'success': boolean, 'id'?: string }>('/api/passport/isloggedin/',
-      null, httpOptions).pipe(map((res: { 'success': boolean, 'user'?: IUser }) => {
+      null, this.httpOptions).pipe(map((res: { 'success': boolean, 'user'?: IUser }) => {
         if (typeof res.user !== 'undefined') {
           ApiService.user = new User(res.user.id, res.user.alias, res.user.email);
         } else {
@@ -96,7 +89,7 @@ export class ApiService {
     return this.http.post<string>(
       '/api/user/name',
       alias,
-      httpOptions
+      this.httpOptions
     );
   }
 
@@ -106,7 +99,7 @@ export class ApiService {
       return this.http.put<{ success: boolean }>(
         '/api/user/password/',
         { 'password': password, 'userid': userid, 'recovery': recoveryOrOldPassword },
-        httpOptions
+        this.httpOptions
       ).pipe(map((res: { success: boolean }) => {
         return res;
       }));
@@ -118,7 +111,7 @@ export class ApiService {
     return this.http.post<{ success: boolean, message: string }>(
       '/api/user/forgot',
       req,
-      httpOptions
+      this.httpOptions
     );
   }
 

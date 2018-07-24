@@ -8,6 +8,7 @@ import { LoginForgotComponent } from '../login-forgot/login-forgot.component';
 import { LoginRecoveryComponent } from '../login-recovery/login-recovery.component';
 import { ChooseActivityComponent } from '../choose-activity/choose-activity.component';
 import { PassportGuard } from '../passport-guard.service';
+import { CreateCompetitionComponent } from '../create-competition/create-competition.component';
 
 const ROUTES: Routes = [
   { path: '', component: WelcomeComponent },
@@ -16,6 +17,7 @@ const ROUTES: Routes = [
   { path: 'login/forgot', component: LoginForgotComponent },
   { path: 'login/recovery', component: LoginRecoveryComponent },
   { path: 'choose-activity', component: ChooseActivityComponent, canActivate: [PassportGuard] },
+  { path: 'create-competition', component: CreateCompetitionComponent, canActivate: [PassportGuard] },
   { path: 'welcome', component: WelcomeComponent }
 ];
 

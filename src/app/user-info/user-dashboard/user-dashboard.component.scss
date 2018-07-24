@@ -1,3 +1,5 @@
+@import "src/styles.scss";
+
 $mw-desktop: 920px;
 
 /* User Dashboard */
@@ -16,6 +18,7 @@ $mw-desktop: 920px;
     color: rgba(0,0,0,0.875);
 }
 
+
 @media screen and ( min-width: $mw-desktop ) {
     #userD {
         top: 128px;
@@ -23,4 +26,20 @@ $mw-desktop: 920px;
         width: calc(100% - 128px - 128px);
         min-height: calc(100% - 128px - 128px);
     }
+}
+
+#userD__closeBtn {
+    position: fixed;
+    right: 32px;
+    top: 80px;
+    transform: scale(1.5);
+}
+
+#userD__settings {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding-right: -20px;
 }

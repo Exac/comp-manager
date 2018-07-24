@@ -8,7 +8,7 @@ export class ValidateAliasNotTaken {
       return apiService.userAliasExists(control.value).pipe(map((res: boolean) => {
         return !res ? null : { aliasTaken: true };
       }));
-    }
+    };
   }
 }
 

@@ -20,9 +20,9 @@ export class UserInfoComponent implements OnInit {
     const usersEmail: string = ApiService.user.email;
     this.apiService.logout().subscribe(
       (success: boolean) => { // navigate back to login page now
-          if (success) this.router.navigate(['/login', { 'email': usersEmail }]);
+          if (success) { this.router.navigate(['/login', { 'email': usersEmail }]); }
       }
-    )
+    );
   }
 
   getUserAlias(): string {

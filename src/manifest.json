@@ -1,8 +1,8 @@
 {
   "name": "Chollima",
   "short_name": "Chollima",
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
+  "theme_color": "#FF4081",
+  "background_color": "#FF4081",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
